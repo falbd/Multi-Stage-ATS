@@ -1,1 +1,43 @@
-﻿
+﻿## Ignore build results
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio files
+.vs/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Entity Framework
+Migrations/
+
+## Logs
+*.log
+
+## Others
+*.swp
+*.bak
+*.tmp
+*.DS_Store
+
+# Ignore secrets if you ever add them
+secrets.json
+
+# Rider IDE files
+.idea/
+
+# Build artifacts
+*.dll
+*.exe
+*.app
+*.pdb
+
+# Publish artifacts
+publish/
