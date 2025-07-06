@@ -1,0 +1,6 @@
+@Multi_Stage_ATS_HostAddress = http://localhost:5229
+
+GET {{Multi_Stage_ATS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
