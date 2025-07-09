@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("7566085f-feec-474f-a5bd-c0697314d858")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Multi-Stage ATS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b463a72e1c7d4ddef6d83e36b34354c32134c85")]
 [assembly: System.Reflection.AssemblyProductAttribute("Multi-Stage ATS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Multi-Stage ATS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
