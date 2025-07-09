@@ -20,13 +20,13 @@ jobs:
         dotnet-version: '9.0.x' # adjust if using .NET 8
 
     - name: Restore dependencies
-      run: dotnet restore "Multi-Stage ATS.sln"
+      run: dotnet restore "Multi-Stage-ATS/Multi-Stage ATS.sln"
 
     - name: Build solution
-      run: dotnet build "Multi-Stage ATS.sln" --configuration Release --no-restore
+      run: dotnet build "Multi-Stage-ATS/Multi-Stage ATS.sln" --configuration Release --no-restore
 
     - name: Run tests
-      run: dotnet test "Multi-Stage ATS.sln" --configuration Release --no-build --verbosity normal
+      run: dotnet test "Multi-Stage-ATS/Multi-Stage ATS.sln" --configuration Release --no-build --verbosity normal
 
     - name: Build Docker image
       run: docker build -t multistage-ats .
@@ -50,4 +50,5 @@ jobs:
         name: published-api
         path: |
           **/bin/Release/net*/publish/**
+
 
