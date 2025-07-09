@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Multi-Stage ATS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0dc087d3d826c3e3d4d84101908d17aee3bb669f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b72e22e557e0e403899120d033ad533437868b77")]
 [assembly: System.Reflection.AssemblyProductAttribute("Multi-Stage ATS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Multi-Stage ATS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,4 +1,4 @@
-name: Multi-Stage-ATS CI/CD
+name: Multi-Stage ATS CI/CD
 
 on:
   push:
