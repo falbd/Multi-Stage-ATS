@@ -39,7 +39,7 @@ jobs:
       - name: Upload published artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: published-api
+          name: Multi-Stage-ATS published-api
           path: ./publish
 
 
