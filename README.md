@@ -14,6 +14,7 @@ A Multi-Stage Applicant Tracking System (ATS) built with:
 Designed for clean, scalable backend architecture to manage applicants, applications, and stage transitions efficiently, aligned with production-ready practices.
 
 🚀 Features
+
 ✅ Manage Applicants, Stages, and Applications
 
 ✅ Multi-stage workflow:
@@ -31,6 +32,7 @@ Applied ➔ Screening ➔ Interview ➔ Offer ➔ Hired
 ✅ Automated builds, tests, and Docker image builds with GitHub Actions CI/CD
 
 🛠️ Tech Stack
+
 .NET 9 / .NET 8
 
 ASP.NET Core Web API
@@ -46,11 +48,13 @@ Docker
 GitHub Actions
 
 ⚙️ Setup Instructions
+
 1️⃣ Clone the Repository
 git clone https://github.com/falbd/Multi-Stage-ATS.git
 cd Multi-Stage-ATS
 
 2️⃣ Database Setup
+
 ✅ Using SQL Server in Visual Studio:
 
 Open SQL Server Object Explorer
@@ -104,6 +108,7 @@ https://localhost:{PORT}/swagger
 📡 API Endpoints
 
 Applicants
+
 POST /api/applicants ➔ Add a new applicant
 
 GET /api/applicants ➔ List all applicants
@@ -121,6 +126,7 @@ GET /api/applications ➔ List all applications with applicant and stage info
 PUT /api/applications/{id}/move-stage ➔ Move an application to a new stage
 
 🗄️ Folder Structure
+
 Multi-Stage-ATS/
 ├── Controllers/          // API endpoints
 ├── Data/                 // DbContext, Repositories, Unit of Work
@@ -132,6 +138,7 @@ Multi-Stage-ATS/
 └── README.md             // This file
 
 ✅ Future Enhancements
+
 Authentication and Role Management
 
 Email notifications on stage changes
