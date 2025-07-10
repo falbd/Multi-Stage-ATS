@@ -1,4 +1,4 @@
-**🗂️ Multi-Stage ATS
+🗂️ Multi-Stage ATS
 
 A Multi-Stage Applicant Tracking System (ATS) built with:
 
