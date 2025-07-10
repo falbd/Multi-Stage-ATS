@@ -20,34 +20,29 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Debug: List files in workspace
-        run: |
-          dir
+        run: dir
 
       - name: Restore dependencies
-        run: |
-          dotnet restore Multi-Stage-ATS.csproj
+        run: dotnet restore "Multi-Stage-ATS.csproj"
 
       - name: Build project
-        run: |
-          dotnet build Multi-Stage-ATS.csproj --configuration Release --no-restore
+        run: dotnet build "Multi-Stage-ATS.csproj" --configuration Release --no-restore
 
       - name: Run tests
-        run: |
-          dotnet test Multi-Stage-ATS.csproj --configuration Release --no-build --verbosity normal
+        run: dotnet test "Multi-Stage-ATS.csproj" --configuration Release --no-build --verbosity normal
 
       - name: Publish project
-        run: |
-          dotnet publish Multi-Stage-ATS.csproj -c Release -o ./publish
+        run: dotnet publish "Multi-Stage-ATS.csproj" -c Release -o ./publish
 
       - name: Build Docker image
-        run: |
-          docker build -t multistage-ats -f Dockerfile .
+        run: docker build -t multistage-ats -f Dockerfile .
 
       - name: Upload published artifacts
         uses: actions/upload-artifact@v4
         with:
           name: published-api
           path: ./publish
+
 
 
 
