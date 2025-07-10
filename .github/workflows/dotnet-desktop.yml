@@ -19,47 +19,36 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Debug: List files in workspace
+        run: |
+          dir
+
       - name: Restore dependencies
         run: |
-          dotnet restore Multi-Stage-ATS.sln
+          dotnet restore Multi-Stage-ATS.csproj
 
-      - name: Build solution
+      - name: Build project
         run: |
-          dotnet build Multi-Stage-ATS.sln --configuration Release --no-restore
+          dotnet build Multi-Stage-ATS.csproj --configuration Release --no-restore
 
       - name: Run tests
         run: |
-          dotnet test Multi-Stage-ATS.sln --configuration Release --no-build --verbosity normal
+          dotnet test Multi-Stage-ATS.csproj --configuration Release --no-build --verbosity normal
 
       - name: Publish project
         run: |
-          dotnet publish Multi-Stage-ATS.sln -c Release -o ./publish
+          dotnet publish Multi-Stage-ATS.csproj -c Release -o ./publish
 
       - name: Build Docker image
         run: |
-          docker build -t multistage-ats -f "Multi-Stage-ATS/Dockerfile" .
-
-      # Optional: Push Docker image to GitHub Container Registry
-      # Uncomment below if you wish to auto-push after build
-      #
-      # - name: Log in to GitHub Container Registry
-      #   uses: docker/login-action@v3
-      #   with:
-      #     registry: ghcr.io
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-      #
-      # - name: Tag and push Docker image
-      #   run: |
-      #     IMAGE_ID=ghcr.io/${{ github.repository }}:latest
-      #     docker tag multistage-ats $IMAGE_ID
-      #     docker push $IMAGE_ID
+          docker build -t multistage-ats -f Dockerfile .
 
       - name: Upload published artifacts
         uses: actions/upload-artifact@v4
         with:
           name: published-api
           path: ./publish
+
 
 
 
