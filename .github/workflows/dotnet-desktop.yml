@@ -2,53 +2,64 @@ name: Multi-Stage ATS CI/CD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build-test:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x' # adjust if using .NET 8
+      - name: Setup .NET 9 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore "Multi-Stage-ATS/Multi-Stage ATS.sln"
+      - name: Restore dependencies
+        run: |
+          dotnet restore "Multi-Stage-ATS/Multi-Stage ATS.sln"
 
-    - name: Build solution
-      run: dotnet build "Multi-Stage-ATS/Multi-Stage ATS.sln" --configuration Release --no-restore
+      - name: Build solution
+        run: |
+          dotnet build "Multi-Stage-ATS/Multi-Stage ATS.sln" --configuration Release --no-restore
 
-    - name: Run tests
-      run: dotnet test "Multi-Stage-ATS/Multi-Stage ATS.sln" --configuration Release --no-build --verbosity normal
+      - name: Run tests
+        run: |
+          dotnet test "Multi-Stage-ATS/Multi-Stage ATS.sln" --configuration Release --no-build --verbosity normal
 
-    - name: Build Docker image
-      run: docker build -t multistage-ats .
+      - name: Publish project
+        run: |
+          dotnet publish "Multi-Stage-ATS/Multi-Stage ATS.sln" -c Release -o ./publish
 
-    # Optional: Push to GitHub Container Registry
-    # - name: Log in to GitHub Container Registry
-    #   uses: docker/login-action@v3
-    #   with:
-    #     registry: ghcr.io
-    #     username: ${{ github.actor }}
-    #     password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Docker image
+        run: |
+          docker build -t multistage-ats -f "Multi-Stage-ATS/Dockerfile" .
 
-    # - name: Tag and push Docker image
-    #   run: |
-    #     docker tag multistage-ats ghcr.io/${{ github.repository }}:latest
-    #     docker push ghcr.io/${{ github.repository }}:latest
+      # Optional: Push Docker image to GitHub Container Registry
+      # Uncomment below if you wish to auto-push after build
+      #
+      # - name: Log in to GitHub Container Registry
+      #   uses: docker/login-action@v3
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
+      #
+      # - name: Tag and push Docker image
+      #   run: |
+      #     IMAGE_ID=ghcr.io/${{ github.repository }}:latest
+      #     docker tag multistage-ats $IMAGE_ID
+      #     docker push $IMAGE_ID
 
-    - name: Upload published artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: published-api
-        path: |
-          **/bin/Release/net*/publish/**
+      - name: Upload published artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: published-api
+          path: ./publish
+
 
 
