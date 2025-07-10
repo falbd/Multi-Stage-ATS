@@ -50,6 +50,7 @@ GitHub Actions
 ⚙️ Setup Instructions
 
 1️⃣ Clone the Repository
+
 git clone https://github.com/falbd/Multi-Stage-ATS.git
 cd Multi-Stage-ATS
 
@@ -82,12 +83,14 @@ sqlcmd -S localhost -d ATS_DB -i Scripts/Seed_Data.sql
 sqlcmd -S localhost -d ATS_DB -i Scripts/StoredProcedures.sql
 
 3️⃣ Configure the Backend
+
 In appsettings.json:
 "ConnectionStrings": {
     "DefaultConnection": "Server=localhost;Database=ATS_DB;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 
 4️⃣ Run the Backend
+
 ✅ Using Visual Studio:
 
 Build and Run (F5)
@@ -101,6 +104,7 @@ docker build -t multistage-ats .
 docker run -p 8080:80 multistage-ats
 
 5️⃣ Test Using Swagger
+
 Navigate to:
 https://localhost:{PORT}/swagger
 ✅ Interactively test and explore API endpoints.
@@ -128,13 +132,21 @@ PUT /api/applications/{id}/move-stage ➔ Move an application to a new stage
 🗄️ Folder Structure
 
 Multi-Stage-ATS/
+
 ├── Controllers/          // API endpoints
+
 ├── Data/                 // DbContext, Repositories, Unit of Work
+
 ├── DTOs/                 // Request & Response Models
+
 ├── Models/               // Entity Models
+
 ├── Scripts/              // SQL Scripts (Tables, Seed Data, Stored Procedures)
+
 ├── Program.cs            // Entry point
+
 ├── appsettings.json      // Configurations
+
 └── README.md             // This file
 
 ✅ Future Enhancements
