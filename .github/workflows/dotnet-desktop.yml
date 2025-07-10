@@ -22,16 +22,16 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore "Multi-Stage-ATS.csproj"
+        run: dotnet restore "Multi-Stage-ATS.sln"
 
       - name: Build project
-        run: dotnet build "Multi-Stage-ATS.csproj" --configuration Release --no-restore
+        run: dotnet build "Multi-Stage-ATS.sln" --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test "Multi-Stage-ATS.csproj" --configuration Release --no-build --verbosity normal
+        run: dotnet test "Multi-Stage-ATS.sln" --configuration Release --no-build --verbosity normal
 
       - name: Publish project
-        run: dotnet publish "Multi-Stage-ATS.csproj" -c Release -o ./publish
+        run: dotnet publish "Multi-Stage-ATS.sln" -c Release -o ./publish
 
       - name: Build Docker image
         run: docker build -t multistage-ats -f Dockerfile .
