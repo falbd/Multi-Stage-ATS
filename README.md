@@ -162,9 +162,11 @@ Frontend with Blazor/React for user interaction
 CI/CD deployment to Azure/AWS using GitHub Actions and Docker
 
 🤝 Contributions
+
 Pull requests are welcome. For significant changes, open an issue first to discuss what you would like to change.
 
 📜 License
+
 MIT License (or your chosen license).
 
 ## 📧 Contact
