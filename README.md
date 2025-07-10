@@ -1,56 +1,67 @@
-﻿# 🗂️ Multi-Stage ATS
+🗂️ Multi-Stage ATS
+A Multi-Stage Applicant Tracking System (ATS) built with:
 
-A **Multi-Stage Applicant Tracking System (ATS)** built with:
+✅ ASP.NET Core Web API
 
-✅ **ASP.NET Core Web API**  
-✅ **SQL Server + EF Core**  
-✅ **Repository & Unit of Work pattern**  
-✅ **Swagger** for interactive API testing
+✅ SQL Server + EF Core
 
-designed for clean, scalable **backend architecture** to manage applicants, applications, and stage transitions efficiently.
+✅ Repository & Unit of Work pattern
 
----
+✅ Swagger for interactive API testing
 
-## 🚀 Features
+✅ Docker + GitHub Actions CI/CD (build, test, publish, and Docker image creation)
 
-- Manage **Applicants, Stages, and Applications**.
-- Multi-stage workflow:
-  - Applied ➔ Screening ➔ Interview ➔ Offer ➔ Hired
-- SQL Server database with **clean normalized structure**.
-- Uses **stored procedures** for advanced reporting and workflow transitions.
-- Swagger UI for testing and exploring API endpoints.
-- Designed for **learning, production adaptation, and clean architecture reference**.
+Designed for clean, scalable backend architecture to manage applicants, applications, and stage transitions efficiently, aligned with production-ready practices.
 
----
+🚀 Features
+✅ Manage Applicants, Stages, and Applications
 
-## 🛠️ Tech Stack
+✅ Multi-stage workflow:
 
-- **.NET 9 / .NET 8**
-- **ASP.NET Core Web API**
-- **SQL Server**
-- **Entity Framework Core**
-- **Swagger (Swashbuckle)**
+Applied ➔ Screening ➔ Interview ➔ Offer ➔ Hired
 
----
+✅ Clean, normalized SQL Server database structure
 
-## ⚙️ Setup Instructions
+✅ Uses stored procedures for advanced reporting and workflows
 
-### 1️⃣ Clone the Repository
+✅ Swagger UI for API exploration and testing
 
-```bash
+✅ Dockerized for consistent environment delivery
+
+✅ Automated builds, tests, and Docker image builds with GitHub Actions CI/CD
+
+🛠️ Tech Stack
+.NET 9 / .NET 8
+
+ASP.NET Core Web API
+
+SQL Server
+
+Entity Framework Core
+
+Swagger (Swashbuckle)
+
+Docker
+
+GitHub Actions
+
+⚙️ Setup Instructions
+1️⃣ Clone the Repository
 git clone https://github.com/falbd/Multi-Stage-ATS.git
 cd Multi-Stage-ATS
 
-Database Setup
-✅ Using SQL Server in Visual Studio
-Open SQL Server Object Explorer (View ➔ SQL Server Object Explorer).
+2️⃣ Database Setup
+✅ Using SQL Server in Visual Studio:
 
-Connect to your local SQL Server instance (localhost, localhost\SQLEXPRESS, or your instance).
+Open SQL Server Object Explorer
 
-Create a new database:
+Connect to localhost or your SQL instance
+
+Create a database:
 
 ATS_DB
-Execute the SQL scripts in the Scripts/ folder:
+
+Execute SQL scripts in Scripts/:
 
 Create_Tables.sql
 
@@ -58,48 +69,56 @@ Seed_Data.sql
 
 StoredProcedures.sql
 
-✅ Using CLI (sqlcmd)
+✅ Using CLI:
 
 sqlcmd -S localhost -d ATS_DB -i Scripts/Create_Tables.sql
+
 sqlcmd -S localhost -d ATS_DB -i Scripts/Seed_Data.sql
+
 sqlcmd -S localhost -d ATS_DB -i Scripts/StoredProcedures.sql
 
-Configure the Backend
-Ensure your connection string in appsettings.json points to your local SQL Server:
-
+3️⃣ Configure the Backend
+In appsettings.json:
 "ConnectionStrings": {
     "DefaultConnection": "Server=localhost;Database=ATS_DB;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 
-Run the Backend
-Using Visual Studio:
-Build and run (F5).
+4️⃣ Run the Backend
+✅ Using Visual Studio:
 
-Using CLI:
+Build and Run (F5)
+
+✅ Using CLI:
 dotnet build
 dotnet run
+
+✅ Using Docker:
+docker build -t multistage-ats .
+docker run -p 8080:80 multistage-ats
+
 5️⃣ Test Using Swagger
 Navigate to:
-
-
 https://localhost:{PORT}/swagger
-✅ You will see your ATS API documentation and be able to test endpoints directly.
+✅ Interactively test and explore API endpoints.
 
 📡 API Endpoints
-Applicants
-POST /api/applicants ➔ Add a new applicant.
 
-GET /api/applicants ➔ List all applicants.
+Applicants
+POST /api/applicants ➔ Add a new applicant
+
+GET /api/applicants ➔ List all applicants
 
 Stages
-GET /api/stages ➔ List all stages.
+
+GET /api/stages ➔ List all stages
 
 Applications
-POST /api/applications ➔ Create a new application.
 
-GET /api/applications ➔ List all applications with applicant and stage info.
+POST /api/applications ➔ Create a new application
 
-PUT /api/applications/{id}/move-stage ➔ Move an application to a new stage.
+GET /api/applications ➔ List all applications with applicant and stage info
+
+PUT /api/applications/{id}/move-stage ➔ Move an application to a new stage
 
 🗄️ Folder Structure
 Multi-Stage-ATS/
@@ -113,15 +132,15 @@ Multi-Stage-ATS/
 └── README.md             // This file
 
 ✅ Future Enhancements
-Authentication and Role Management.
+Authentication and Role Management
 
-Email notifications on stage changes.
+Email notifications on stage changes
 
-Dashboard and analytics.
+Dashboard and analytics
 
-Frontend with Blazor/React for user interaction.
+Frontend with Blazor/React for user interaction
 
-Dockerization for clean deployment.
+CI/CD deployment to Azure/AWS using GitHub Actions and Docker
 
 🤝 Contributions
 Pull requests are welcome. For significant changes, open an issue first to discuss what you would like to change.
